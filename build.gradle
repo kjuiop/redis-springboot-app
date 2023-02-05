@@ -7,25 +7,53 @@ plugins {
 group 'io.gig'
 version '1.0-SNAPSHOT'
 
+bootJar {
+    enabled= false
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 repositories {
     mavenCentral()
 }
 
-dependencies {
+subprojects {
 
-    /* spring boot */
-    implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
 
-    /* redis */
-    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-    implementation 'org.springframework.session:spring-session-data-redis:2.7.0'
+    sourceCompatibility = JavaVersion.VERSION_11
 
-    /* test */
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    configurations {
+        devlopmentOnly
+        runtimeClasspath {
+            extendsFrom developmentOnly
+        }
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    dependencies {
+        /* spring boot */
+        implementation 'org.springframework.boot:spring-boot-starter'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+
+        /* redis */
+        implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+        implementation 'org.springframework.session:spring-session-data-redis:2.7.0'
+
+        /* test */
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    }
 }
 
 test {

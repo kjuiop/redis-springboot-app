@@ -1,2 +1,3 @@
 rootProject.name = 'redis-springboot-app'
+include 'basic-redis-app'
 
