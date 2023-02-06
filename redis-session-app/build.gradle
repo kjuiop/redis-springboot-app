@@ -3,7 +3,18 @@ plugins {
 }
 
 group 'io.gig'
-version '1.0-SNAPSHOT'
+
+/**
+ * java -Dserver.port=8081 -jar redis-session-app.jar
+ */
+bootJar {
+    enabled = true
+}
+
+jar {
+    enabled = false
+}
+
 
 repositories {
     mavenCentral()
