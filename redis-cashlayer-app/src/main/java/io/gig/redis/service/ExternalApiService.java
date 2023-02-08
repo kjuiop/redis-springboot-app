@@ -17,12 +17,12 @@ public class ExternalApiService {
         // 외부 서비스나 DB 호출했다 가정하고, 네트워크 지연시간 추가
 
         try {
-            Thread.sleep(500);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             log.error("external-api exception");
         }
 
-        System.out.println("Getting user age from other server .....");
+        log.info("Getting user age from other server .....");
 
         if (userId.equals("A")) {
             return "Admin";
@@ -39,12 +39,12 @@ public class ExternalApiService {
 
         // 외부 서비스나 DB 호출
         try {
-            Thread.sleep(500);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             log.error("external-api exception");
         }
 
-        System.out.println("Getting user age from other server .....");
+        log.info("Getting user age from other server .....");
 
         if (userId.equals("A")) {
             return 28;
