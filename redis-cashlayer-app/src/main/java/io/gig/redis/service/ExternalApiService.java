@@ -22,7 +22,7 @@ public class ExternalApiService {
             log.error("external-api exception");
         }
 
-        log.info("Getting user age from other server .....");
+        log.info("Getting user name from other server .....");
 
         if (userId.equals("A")) {
             return "Admin";
