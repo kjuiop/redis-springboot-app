@@ -20,4 +20,8 @@ public class UserProfile {
     @JsonProperty
     private int age;
 
+    public UserProfile(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
 }
