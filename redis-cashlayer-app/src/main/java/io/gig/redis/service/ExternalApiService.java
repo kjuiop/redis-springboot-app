@@ -1,6 +1,7 @@
 package io.gig.redis.service;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -35,6 +36,7 @@ public class ExternalApiService {
         return "";
     }
 
+    @Cacheable(cacheNames = "userAgeCache", key = "#userId")
     public int getUserAge(String userId) {
 
         // 외부 서비스나 DB 호출
