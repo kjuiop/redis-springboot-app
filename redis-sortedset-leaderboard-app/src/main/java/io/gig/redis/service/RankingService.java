@@ -5,6 +5,10 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
 /**
  * @author : JAKE
  * @date : 2023/02/09
@@ -32,4 +36,11 @@ public class RankingService {
         return rank;
     }
 
+    public List<String> getTopRank(int limit) {
+
+        ZSetOperations zSetOps = redisTemplate.opsForZSet();
+        Set<String> rangeSet = zSetOps.reverseRange(LEADERBOARD_KEY, 0, limit - 1);
+
+        return new ArrayList<>(rangeSet);
+    }
 }
