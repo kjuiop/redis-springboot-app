@@ -25,5 +25,10 @@ public class RankingController {
         return rankingService.setUserScore(userId, score);
     }
 
-
+    @GetMapping("/rank")
+    public Long getUserRank(
+            @RequestParam String userId
+    ) {
+        return rankingService.getUserRanking(userId);
+    }
 }
