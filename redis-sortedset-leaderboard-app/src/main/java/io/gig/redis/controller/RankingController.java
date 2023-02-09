@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @author : JAKE
  * @date : 2023/02/09
@@ -30,5 +32,10 @@ public class RankingController {
             @RequestParam String userId
     ) {
         return rankingService.getUserRanking(userId);
+    }
+
+    @GetMapping("/top-rank")
+    public List<String> getTopRank() {
+        return rankingService.getTopRank(3);
     }
 }
