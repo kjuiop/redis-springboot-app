@@ -25,4 +25,11 @@ public class RankingService {
         return true;
     }
 
+    public Long getUserRanking(String userId) {
+        ZSetOperations zSetOps = redisTemplate.opsForZSet();
+        Long rank = zSetOps.rank(LEADERBOARD_KEY, userId);
+
+        return rank;
+    }
+
 }
