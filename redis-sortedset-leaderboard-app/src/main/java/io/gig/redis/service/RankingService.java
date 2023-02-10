@@ -31,7 +31,7 @@ public class RankingService {
 
     public Long getUserRanking(String userId) {
         ZSetOperations zSetOps = redisTemplate.opsForZSet();
-        Long rank = zSetOps.rank(LEADERBOARD_KEY, userId);
+        Long rank = zSetOps.reverseRank(LEADERBOARD_KEY, userId);
 
         return rank;
     }
