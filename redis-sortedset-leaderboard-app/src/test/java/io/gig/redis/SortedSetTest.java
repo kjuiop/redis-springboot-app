@@ -17,14 +17,26 @@ import java.util.Collections;
 @SpringBootTest
 public class SortedSetTest {
 
+    private static final int TEST_SCOPE = 1000000;
+
     @Autowired
     private RankingService rankingService;
 
     @Test
+    void insertScore() {
+        for (int i=0; i<TEST_SCOPE; i++) {
+            int score = (int)(Math.random() * TEST_SCOPE);
+            String user_id = "user_" + i;
+
+            rankingService.setUserScore(user_id, score);
+        }
+    }
+
+    @Test
     void inMemorySortPerformance() {
         ArrayList<Integer> list = new ArrayList<>();
-        for (int i=0; i<1000000; i++) {
-            int score = (int)(Math.random() * 1000000);
+        for (int i=0; i<TEST_SCOPE; i++) {
+            int score = (int)(Math.random() * TEST_SCOPE);
             list.add(score);
         }
 
@@ -35,6 +47,6 @@ public class SortedSetTest {
         Collections.sort(list);
 
         Duration elapse = Duration.between(before, Instant.now());
-        System.out.println((elapse.getNano() / 1000000) + " ms");
+        System.out.println((elapse.getNano() / TEST_SCOPE) + " ms");
     }
 }
