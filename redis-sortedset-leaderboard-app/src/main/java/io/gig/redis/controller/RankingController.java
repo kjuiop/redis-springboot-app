@@ -21,7 +21,7 @@ public class RankingController {
 
     @PostMapping("/rank")
     public Boolean setScore(
-            @RequestParam String userId,
+            @RequestParam(name = "user_id") String userId,
             @RequestParam int score
     ) {
         return rankingService.setUserScore(userId, score);
@@ -29,7 +29,7 @@ public class RankingController {
 
     @GetMapping("/rank")
     public Long getUserRank(
-            @RequestParam String userId
+            @RequestParam(name = "user_id") String userId
     ) {
         return rankingService.getUserRanking(userId);
     }
