@@ -9,6 +9,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * @author : JAKE
@@ -21,6 +22,27 @@ public class SortedSetTest {
 
     @Autowired
     private RankingService rankingService;
+
+
+    @Test
+    void getRanks() {
+        // 최초 네트워크 비용을 제거하기 위한 소스
+        rankingService.getTopRank(1);
+
+        // 8ms
+        Instant before = Instant.now();
+        Long userRank = rankingService.getUserRanking("user_100");
+        Duration elapse = Duration.between(before, Instant.now());
+        System.out.println(String.format("Rank(%d) - rank %d ms ", userRank, (elapse.getNano() / TEST_SCOPE)));
+
+
+        // 2ms
+        before = Instant.now();
+        List<String> topRanker = rankingService.getTopRank(10);
+        elapse = Duration.between(before, Instant.now());
+        System.out.println(String.format("Range - Took %d ms ", (elapse.getNano() / TEST_SCOPE)));
+    }
+
 
     @Test
     void insertScore() {
