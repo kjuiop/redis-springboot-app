@@ -25,7 +25,7 @@ public class RedisConfig {
      * 메세지를 아래의 container 에 등록함
      */
     @Bean
-    RedisMessageListenerContainer redisMessageListenerContainer() {
+    public RedisMessageListenerContainer redisMessageListenerContainer() {
         final RedisMessageListenerContainer container = new RedisMessageListenerContainer();
         container.setConnectionFactory(redisConnectionFactory());
         return container;
