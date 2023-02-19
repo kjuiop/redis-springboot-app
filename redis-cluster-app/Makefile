@@ -1,4 +1,10 @@
 
+redis_cluster_add_node_slave:
+	redis-cli --cluster add-node localhost:7007 localhost:7006 --cluster-slave
+
+redis_cluster_add_node:
+	redis-cli --cluster add-node localhost:7006 localhost:7001
+
 redis_cluster_create:
 	redis-cli --cluster create localhost:7000 localhost:7001 localhost:7002 localhost:7003 localhost:7004 localhost:7005 --cluster-replicas 1
 
