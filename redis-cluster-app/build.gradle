@@ -3,29 +3,13 @@ plugins {
 }
 
 group 'io.gig'
-
-/**
- * java -Dserver.port=8081 -jar redis-session-app.jar
- */
-bootJar {
-    enabled = true
-}
-
-jar {
-    enabled = false
-}
-
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-
-    /* redis sessino dependency */
-    implementation 'org.springframework.session:spring-session-data-redis:2.7.0'
-
-
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
