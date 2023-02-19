@@ -8,5 +8,6 @@
 build
 bin
 
-# nodes
+# cluster nodes file
 nodes.conf
+dump.rdb
