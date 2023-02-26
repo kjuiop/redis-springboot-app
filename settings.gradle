@@ -1,4 +1,5 @@
 rootProject.name = 'redis-springboot-app'
 include 'basic-redis-app', 'redis-session-app', 'redis-cashlayer-app', 'redis-sortedset-leaderboard-app', 'redis-pubsub-chatting-app'
 include 'redis-sentinel-app', 'redis-cluster-app'
+include 'redis-streams-order-app', 'redis-streams-payment-app', 'redis-streams-notification-app'
 
