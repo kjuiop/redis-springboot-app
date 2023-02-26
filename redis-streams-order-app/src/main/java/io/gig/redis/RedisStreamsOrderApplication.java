@@ -8,10 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date : 2023/02/26
  */
 @SpringBootApplication
-public class RedisStreamsApplication {
+public class RedisStreamsOrderApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(RedisStreamsApplication.class, args);
+        SpringApplication.run(RedisStreamsOrderApplication.class, args);
     }
 
 }
